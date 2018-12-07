@@ -1,5 +1,9 @@
+## Capture the argument
+
 ```java
-    ArgumentCaptor<DynamoIdentityProvider> captor = ArgumentCaptor.forClass(DynamoIdentityProvider.class);
+    @Test
+	public void should_DeleteIdentityProvider_For_ValidIdpId() throws Exception {
+		ArgumentCaptor<DynamoIdentityProvider> captor = ArgumentCaptor.forClass(DynamoIdentityProvider.class);
 
 		dynamoIdentityProviderRepository.deleteIdentityProvider(testIDP);
 		// verify 'delete' is called on dynamoDBMapper exactly '1' times, and that 'delete' is called against the 'testDynamoIdentityProvider' object
@@ -12,4 +16,5 @@
 		assertEquals("support url:", testDynamoIDP.getSupportURL(), actual.getSupportURL());
 		assertEquals("partition:", testDynamoIDP.getPartition(), actual.getPartition());
 		assertEquals("sort key:", testDynamoIDP.getSortKey(), actual.getSortKey());
+	}
 ```
